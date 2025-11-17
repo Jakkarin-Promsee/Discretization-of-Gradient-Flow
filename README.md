@@ -4,7 +4,7 @@
 
 ## Introduction
 
-## Detial Description
+## Detail Description
 
 ### 1. Principles of Deep Learning
 
@@ -43,9 +43,9 @@ $\displaystyle z^{(l)} = a^{(l-1)} W^{(l)} + b^{(l)}$
 
 where:
 
-- $\displaystyle a^{(l-1)} $ : activation from the previous layer
-- $\displaystyle W^{(l)} $ : weight matrix
-- $\displaystyle b^{(l)} $ : bias vector
+- $\displaystyle a^{(l-1)}$ : activation from the previous layer
+- $\displaystyle W^{(l)}$ : weight matrix
+- $\displaystyle b^{(l)}$ : bias vector
 
 <br>
 
@@ -88,7 +88,7 @@ The idea is to use the slope of the function (first-order derivative) to determi
 
 $\displaystyle
 W^{(l)} = W^{(l)} - \eta \frac{\partial L}{\partial W^{(l)}}, \quad 
-b^{(l)} = b^{(l)} - \eta \frac{\partial L}{\partial b^{(l)}}, \quad 
+b^{(l)} = b^{(l)} - \eta \frac{\partial L}{\partial b^{(l)}}
 $
 
 Example:  
