@@ -151,9 +151,6 @@ $$
 \begin{bmatrix}
 \theta_1 \\ \theta_2 \\ \vdots \\ \theta_n
 \end{bmatrix}
-$$
-
-$$
 
 , \quad
 
@@ -161,11 +158,14 @@ $$
 =
 \begin{bmatrix}
 \displaystyle \frac{\partial L}{\partial \theta_1}
-\\
+\\[10pt]
+
 \displaystyle \frac{\partial L}{\partial \theta_2}
-\\
+\\[10pt]
+
 \vdots
-\\
+\\[10pt]
+
 \displaystyle \frac{\partial L}{\partial \theta_n}
 \end{bmatrix}
 
@@ -207,40 +207,88 @@ H(\boldsymbol{\theta})
 \end{bmatrix}
 $$
 
----
-
 ## 2.2 Components and Fundamental Properties of the Hessian
 
-### 2.2.1 Clairaut's Theorem (Equality of Mixed Partials)
+### 2.2.1 Sysmetrix Properties
 
-If mixed second partial derivatives are continuous over a region, then:
+From Clairaut's Theorem (Equality of Mixed Partials), If mixed second partial derivatives are continuous over a region, then:
 
-\[
-H*{i,j} = H*{j,i}
-\]
+$$
+\frac{\partial^2 f(x)}{\partial x_i\partial x_j}
+=
+\frac{\partial^2 f(x)}{\partial x_j\partial x_i}
 
-Thus, the Hessian is a **symmetric matrix**.
+\ \longrightarrow \
 
----
+H_{ij}(\theta)
+=
+\frac{\partial^2 L(\theta)}{\partial\theta_i\partial\theta_j}
+=
+\frac{\partial^2 L(\theta)}{\partial\theta_j\partial\theta_i}
+=
+H_{ji}(\theta)
+$$
 
-### 2.2.2 The Spectral Theorem
+### 2.2.2 Quadratic Form
 
-If the Hessian \( H(\theta) \) is a real symmetric matrix, it can be decomposed as:
+The quadratic form $Q(\mathbf{x}) = \mathbf{x}^T H \mathbf{x}$ is the second-order term of a function's Taylor expansion. It tells us about the local curvature (or shape) of the function $f(\mathbf{x})$ around a critical point.
 
-\[
-H = Q \Lambda Q^T
-\]
+$$
+\begin{align*}
+Q(\mathbf{x}) &= \mathbf{x}^T H \mathbf{x} \in \mathbb{R}, \quad \forall \mathbf{x} \in \mathbb{R}^n \quad \text{(The Quadratic Form)} \\
+&= \sum_{i=1}^n \sum_{j=1}^n h_{ij} x_i x_j \\
+&= \sum_{i} h_{ii} x_i^2 + \sum_{i<j} h_{ij} x_i x_j + \sum_{j<i} h_{ji} x_j x_i \\
+&= \sum_{i} h_{ii} x_i^2 + 2 \sum_{i<j} h_{ij} x_i x_j \in \mathbb{R} \quad \text{, where } H \text{ is symmetric}
+\end{align*}
+$$
 
-Where:
+- If Q(x) > 0, the function is convex and the critical point is a local minimum.
+- If Q(x) < 0, the function is concave and the critical point is a local maximum.
+- If Q(x) takes on both signs, the critical point is a saddle point.
 
-#### 2.2.2.1 Λ (Lambda)
+### 2.2.3 Eigen-decomposit
 
-- A diagonal matrix
-- Contains the eigenvalues \( \lambda_1, \lambda_2, ..., \lambda_n \) of \( H \)
-- All eigenvalues are real numbers
+From the Spectral Theorem, if $H \in \mathbb{R}^{n \times n}$ and $H$ is symmetric ($H = H^T$), then:
 
-#### Q (Orthogonal Matrix)
+$$
+\lambda_i \in \mathbb{R}, \quad \text{for all } i = 1, \ldots, n ,\quad
+\mathbf{v}_i \in \mathbb{R}^n, \quad \text{for all } i = 1, \ldots, n
+$$
 
-- Columns are the eigenvectors of \( H \)
-- They form an orthonormal basis of \( \mathbb{R}^n \)
-- \( Q^T = Q^{-1} \)
+Proving:
+
+1. $A \in \mathbb{R}^{n \times n}, \lambda \in \mathbb{R}, v \in \mathbb{R}^2$ that $Av = \lambda v \ (1)$
+2. take (1) with $v^*$ from both left size
+   $$
+   v^* (Av) = v^* (\lambda v) \\
+   (v* A) v = \lambda (v^* v) \tag{2}
+   $$
+3. take (2) with conjugate transpose
+   $$
+   [(v^* A) v]^* = v^* A^* v^{**} = v^* A^* v \tag{3}
+   $$
+4. Because $A \in \mathbb{R}^{n \times n}$, making $\bar{A} = A$. And because $A$ is a symmetric, making $A^T = A$. So from (3):
+   $$
+    v^* A^* v = v^* \bar{A}^T v = v^* A v \tag{4}
+   $$
+   $$
+   v^* A^* v = [\lambda (v^* v)]^* = \bar{\lambda} (v^* v) \tag{5}
+   $$
+5. From (2) is equal (5):
+   $$
+   (v* A) v = \lambda (v^* v) = \bar{\lambda} (v^* v) \\[10pt]
+   (\lambda - \bar{\lambda})(v^* v) = 0
+   $$
+6. Because $v^* v \ne 0$, So:
+
+   $$
+    (\lambda - \bar{\lambda}) = 0 \quad \rightarrow \quad
+    \lambda = \bar{\lambda} \quad \longrightarrow \quad
+    \forall \lambda \in \mathbb{R}
+   $$
+
+7. Using Eigen vector formular:
+   $$
+   (A - \lambda I)v = 0
+   $$
+   We know $A \in \mathbb{R}^{n \times n}, \lambda \in \mathbb{R}$, Thus $\forall (A-\lambda I) \in \mathbb{R}$, Thus $\forall v \in \mathbb{R}$.
