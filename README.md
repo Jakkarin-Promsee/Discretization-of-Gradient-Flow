@@ -144,7 +144,11 @@ $$
 
 - **Hessian (Second-order derivative):** $\nabla^2 L(\theta) = H(\theta) \in \mathbb{R}^{n \times n}$ ,Describes the curvature of $L$
 
-$$
+<p align="center">
+  <img src="docs-src\latex\2.1.hessain-dimension.png" alt="Neural Network Overview" width="700px">
+</p>
+
+<!-- $$
 \displaystyle
 \boldsymbol{\theta}
 =
@@ -205,7 +209,7 @@ H(\boldsymbol{\theta})
 &
 \displaystyle \frac{\partial^2 L}{\partial \theta_d^2}
 \end{bmatrix}
-$$
+$$ -->
 
 ## 2.2 Components and Fundamental Properties of the Hessian
 
@@ -233,14 +237,18 @@ $$
 
 The quadratic form $Q(\mathbf{x}) = \mathbf{x}^T H \mathbf{x}$ is the second-order term of a function's Taylor expansion. It tells us about the local curvature (or shape) of the function $f(\mathbf{x})$ around a critical point.
 
-$$
+<p align="center">
+  <img src="docs-src\latex\2.2.2.quadratic-form.png" alt="Neural Network Overview" width="500px">
+</p>
+
+<!-- $$
 \begin{align*}
 Q(\mathbf{x}) &= \mathbf{x}^T H \mathbf{x} \in \mathbb{R}, \quad \forall \mathbf{x} \in \mathbb{R}^n \quad \text{(The Quadratic Form)} \\
 &= \sum_{i=1}^n \sum_{j=1}^n h_{ij} x_i x_j \\
 &= \sum_{i}^n h_{ii} x_i^2 + \sum_{i<j}^n h_{ij} x_i x_j + \sum_{j<i}^n h_{ji} x_j x_i \\
 &= \sum_{i}^n h_{ii} x_i^2 + 2 \sum_{i<j}^n h_{ij} x_i x_j \in \mathbb{R}^n \quad \text{, where } H \text{ is symmetric}
 \end{align*}
-$$
+$$ -->
 
 - If Q(x) > 0, the function is convex and the critical point is a local minimum.
 - If Q(x) < 0, the function is concave and the critical point is a local maximum.
@@ -260,19 +268,19 @@ Proving:
 1. $A \in \mathbb{R}^{n \times n}, \lambda \in \mathbb{R}, v \in \mathbb{R}^2$ that $Av = \lambda v \ (1)$
 2. take (1) with $v^*$ from both left size
    $$
-   v^* (Av) = v^* (\lambda v) \\
-   (v* A) v = \lambda (v^* v) \tag{2}
+   v^* (Av) = v^* (\lambda v) \quad \ \\
+   (v* A) v = \lambda (v^* v) \quad (2)
    $$
 3. take (2) with conjugate transpose
    $$
-   [(v^* A) v]^* = v^* A^* v^{**} = v^* A^* v \tag{3}
+   [(v^* A) v]^* = v^* A^* v^{**} = v^* A^* v \quad (3)
    $$
 4. Because $A \in \mathbb{R}^{n \times n}$, making $\bar{A} = A$. And because $A$ is a symmetric, making $A^T = A$. So from (3):
    $$
-    v^* A^* v = v^* \bar{A}^T v = v^* A v \tag{4}
+    v^* A^* v = v^* \bar{A}^T v = v^* A v \quad (4)
    $$
    $$
-   v^* A^* v = [\lambda (v^* v)]^* = \bar{\lambda} (v^* v) \tag{5}
+   v^* A^* v = [\lambda (v^* v)]^* = \bar{\lambda} (v^* v) \quad (5)
    $$
 5. From (2) is equal (5):
    $$
