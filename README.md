@@ -228,6 +228,7 @@ $$
 H_{ij}(\theta)
 = \frac{\partial^2 f(x)} {\partial \theta_i \partial \theta_j}
 = \frac{\partial^2 f(x)} {\partial \theta_j \partial \theta_i}
+= H_{ji}(\theta)
 $$
 
 f
@@ -236,7 +237,7 @@ $$
 % \quad \rightarrow \quad
 % H_{ij}(\theta)
 =
-\frac{\partial^2 f(x)} {\partial x_i \partial x_j}
+
 
 
 
