@@ -272,46 +272,46 @@ Proving:
 1. $A \in \mathbb{R}^{n \times n}, \lambda \in \mathbb{R}, v \in \mathbb{R}^2$ that $Av = \lambda v \ (1)$
 2. take (1) with $v^\dagger$ from both left size
 
-   $$
-   v^\dagger (Av) = v^\dagger (\lambda v) \quad \ \\
-   (v^\dagger A) v = \lambda (v^\dagger v) \quad (2)
-   $$
+$$
+v^\dagger (Av) = v^\dagger (\lambda v) \quad \ \\
+(v^\dagger A) v = \lambda (v^\dagger v) \quad (2)
+$$
 
 3. take (2) with conjugate transpose
 
-   $$
-   [(v^\dagger A) v]^\dagger = v^\dagger A^\dagger v^{\dagger\dagger} = v^\dagger A^\dagger v \quad (3)
-   $$
+$$
+[(v^\dagger A) v]^\dagger = v^\dagger A^\dagger v^{\dagger\dagger} = v^\dagger A^\dagger v \quad (3)
+$$
 
 4. Because $A \in \mathbb{R}^{n \times n}$, making $\bar{A} = A$. And because $A$ is a symmetric, making $A^T = A$. So from (3):
 
-   $$
-    v^\dagger A^\dagger v = v^\dagger \bar{A}^T v = v^\dagger A v \quad (4)
-   $$
+$$
+v^\dagger A^\dagger v = v^\dagger \bar{A}^T v = v^\dagger A v \quad (4)
+$$
 
-   $$
-   v^\dagger A^\dagger v = [\lambda (v^\dagger v)]^\dagger = \bar{\lambda} (v^\dagger v) \quad (5)
-   $$
+$$
+v^\dagger A^\dagger v = [\lambda (v^\dagger v)]^\dagger = \bar{\lambda} (v^\dagger v) \quad (5)
+$$
 
 5. From (2) is equal (5):
 
-   $$
-   (v\dagger A) v = \lambda (v^\dagger v) = \bar{\lambda} (v^\dagger v) \\[10pt]
-   (\lambda - \bar{\lambda})(v^\dagger v) = 0
-   $$
+$$
+(v\dagger A) v = \lambda (v^\dagger v) = \bar{\lambda} (v^\dagger v) \\[10pt]
+(\lambda - \bar{\lambda})(v^\dagger v) = 0
+$$
 
 6. Because $v^\dagger v \ne 0$, So:
 
-   $$
-    (\lambda - \bar{\lambda}) = 0 \quad \rightarrow \quad
-    \lambda = \bar{\lambda} \quad \longrightarrow \quad
-    \forall \lambda \in \mathbb{R}
-   $$
+$$
+(\lambda - \bar{\lambda}) = 0 \quad \rightarrow \quad
+\lambda = \bar{\lambda} \quad \longrightarrow \quad
+\forall \lambda \in \mathbb{R}
+$$
 
 7. Using Eigen vector formular:
 
-   $$
-   (A - \lambda I)v = 0
-   $$
+$$
+(A - \lambda I)v = 0
+$$
 
-   We know $A \in \mathbb{R}^{n \times n}, \lambda \in \mathbb{R}$, Thus $\forall (A-\lambda I) \in \mathbb{R}$, Thus $\forall v \in \mathbb{R}$.
+We know $A \in \mathbb{R}^{n \times n}, \lambda \in \mathbb{R}$, Thus $\forall (A-\lambda I) \in \mathbb{R}$, Thus $\forall v \in \mathbb{R}$.
