@@ -247,21 +247,10 @@ The quadratic form $Q(\mathbf{x}) = \mathbf{x}^T H \mathbf{x}$ is the second-ord
 
 $$
 \begin{align*}
-(a + b)^2 &= (a+b)(a+b) \\
-&= a^2 +2ab + b^2 \\
-&= \sum_{i=1}^n \sum_{j=1}^n h_{ij} x_i x_j \\
-&= \sum_{i=1}^n h_{ii} x_i^2 + \sum_{i \ne j}^n h_{ij} x_i x_j \\
-&= \sum_{i=1}^n h_{ii} x_i^2 + 2 \sum_{i \lt j}^n h_{ij} x_i x_j \in \mathbb{R} \quad \text{, where } \mathbf{H} \text{ is symmetric}
-&= fuck
-\end{align*}
-$$
-
-$$
-\begin{align*}
 Q(\mathbf{x}) &= \mathbf{x}^T \mathbf{H} \mathbf{x} \in \mathbb{R}, \quad \forall \mathbf{x} \in \mathbb{R}^n \quad \text{(The Quadratic Form)} \\
 &= \sum_{i=1}^n \sum_{j=1}^n h_{ij} x_i x_j \\
 &= \sum_{i=1}^n h_{ii} x_i^2 + \sum_{i \ne j}^n h_{ij} x_i x_j \\
-&= \sum_{i=1}^n h_{ii} x_i^2 + 2 \sum_{i<j}^n h_{ij} x_i x_j \in \mathbb{R} \quad \text{, where } \mathbf{H} \text{ is symmetric}
+&= \sum_{i=1}^n h_{ii} x_i^2 + 2 \sum_{i \lt j}^n h_{ij} x_i x_j \in \mathbb{R} \quad \text{, where } \mathbf{H} \text{ is symmetric}
 \end{align*}
 $$
 
