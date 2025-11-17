@@ -324,12 +324,45 @@ From the Spectral Theorem, if $H \in \mathbb{R}^{n \times n}$ and $H$ is symmetr
 
 Proving:
 
-1. Consider $Av_1 = \lambda_1 v_1 \ (1)$ and $Av_1 = \lambda_1 v_1 \ (2)$
+1. Consider $Av_1 = \lambda_1 v_1 \ (1)$ and $Av_2 = \lambda_2 v_2 \ (2)$
 2. Start with $v_1^T (A v_2)$ to substitude $A v_2$:
 
 $$
 \begin{array}{l}
-a = b + c \\
-d = e + f
+v_1^T (A v_2) = v_1^T (\lambda_2 v_2) \quad \\[8pt]
+v_1^T (A v_2) = \lambda_2 (v_1^T v_2) \quad (3)
+\end{array}
+$$
+
+3. Since $v^T (A v)$ is sclale 1 x 1, $v^T (A v) = [v^T (A v)]^T$. From (3):
+
+$$
+\begin{array}{l}
+v_1^T (A v_2) = [v_1^T (A v_2)]^T \\[8pt]
+v_1^T (A v_2) = v_2^T A^T v_1 \quad, A \ \text{is symmetric} \\[8pt]
+v_1^T (A v_2) = v_2^T A v_1 \quad, \text{substitude (1)} \\[8pt]
+v_1^T (A v_2) = v_2^T (\lambda_1 v_1) \\[8pt]
+v_1^T (A v_2) = \lambda_1 (v_2^T v_1) \quad (4)
+\end{array}
+$$
+
+4. (3) is equal (4):
+
+$$
+\begin{array}{c}
+\lambda_1 (v_2^T v_1) = \lambda_2 (v_1^T v_2) \\[8pt]
+(\lambda_1-\lambda_2)(v_1^T v_2) = 0
+\end{array}
+$$
+
+5. As spectral's theorem, we know $\lambda_i \in \mathbb{R}, \quad \text{for all } i = 1, \ldots, n ,\quad \mathbf{v}_i \in \mathbb{R}^n, \quad \text{for all } i = 1, \ldots, n$. So $\lambda_1 \ne \lambda_2$, making $(\lambda_1 \ne \lambda_2)$ is non-zero. Thus, $(v_1^T v_2) = 0$ or $v_1 \dot v_2$ = 0. Thus $v_1$ and $v_1$ is orthogonal.
+
+---
+
+# Prop
+
+$$
+\begin{array}{l}
+
 \end{array}
 $$
