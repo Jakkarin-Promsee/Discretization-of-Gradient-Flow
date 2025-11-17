@@ -226,6 +226,7 @@ $$
 = \frac{\partial^2 f(x)} {\partial x_j \partial x_i} \quad
 \rightarrow \quad
 H_{ij}(\theta)
+= \frac{\partial^2 f(x)} {\partial x_i \partial x_j}
 $$
 
 f
