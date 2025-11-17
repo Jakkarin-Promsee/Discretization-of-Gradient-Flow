@@ -273,7 +273,10 @@ Proving:
 2. take (1) with $v^\dagger$ from both left size
 
 $$
-v^\dagger (Av) = v^\dagger (\lambda v) \quad \ \\
+v^\dagger (Av) = v^\dagger (\lambda v) \quad
+$$
+
+$$
 (v^\dagger A) v = \lambda (v^\dagger v) \quad (2)
 $$
 
@@ -296,7 +299,10 @@ $$
 5. From (2) is equal (5):
 
 $$
-(v\dagger A) v = \lambda (v^\dagger v) = \bar{\lambda} (v^\dagger v) \\[10pt]
+(v\dagger A) v = \lambda (v^\dagger v) = \bar{\lambda} (v^\dagger v)
+$$
+
+$$
 (\lambda - \bar{\lambda})(v^\dagger v) = 0
 $$
 
