@@ -34,7 +34,7 @@ The use of **activation functions** such as **ReLU**, **Sigmoid**, and **Tanh** 
 
 A **_forward pass_** is the computation of the model’s output from the input, passing through all neurons and layers. The resulting prediction is then used to compute the **loss**, which will be utilized for gradient computation in the next section.
 
-<p align="center">
+<p align="center"  style="text-align: center;">
   <img src="docs-src\images\singular-neural.png" alt="Neural Network Overview" width="250px">
   <br>
   <em>Figure 2: Computation within a singular artificial neuron (Source: GeeksforGeeks [1])</em>
@@ -144,7 +144,7 @@ $$
 
 - **Hessian (Second-order derivative):** $\nabla^2 L(\theta) = H(\theta) \in \mathbb{R}^{n \times n}$ ,Describes the curvature of $L$
 
-<p align="center">
+<p align="center"  style="text-align: center;">
   <img src="docs-src\latex\2.1.hessain-dimension.png" alt="Neural Network Overview" width="600px">
 </p>
 
@@ -217,7 +217,7 @@ $$ -->
 
 From Clairaut's Theorem (Equality of Mixed Partials), If mixed second partial derivatives are continuous over a region, then:
 
-<p align="center">
+<p align="center"  style="text-align: center;">
   <img src="docs-src\latex\2.2.1.sysmmetic-properties.png" alt="Neural Network Overview" width="500px">
 </p>
 
@@ -241,7 +241,7 @@ $$ -->
 
 The quadratic form $Q(\mathbf{x}) = \mathbf{x}^T H \mathbf{x}$ is the second-order term of a function's Taylor expansion. It tells us about the local curvature (or shape) of the function $f(\mathbf{x})$ around a critical point.
 
-<p align="center" >
+<p align="center"  style="text-align: center;" >
   <img src="docs-src\latex\2.2.2.quadratic-form.png" alt="Neural Network Overview" width="500px">
 </p>
 
@@ -273,11 +273,10 @@ Proving:
 2. take (1) with $v^\dagger$ from both left size
 
 $$
+\begin{array}{l}
 v^\dagger (Av) = v^\dagger (\lambda v) \quad
-$$
-
-$$
 (v^\dagger A) v = \lambda (v^\dagger v) \quad (2)
+\end{array}
 $$
 
 3. take (2) with conjugate transpose
@@ -289,11 +288,10 @@ $$
 4. Because $A \in \mathbb{R}^{n \times n}$, making $\bar{A} = A$. And because $A$ is a symmetric, making $A^T = A$. So from (3):
 
 $$
+\begin{array}{l}
 v^\dagger A^\dagger v = v^\dagger \bar{A}^T v = v^\dagger A v \quad (4)
-$$
-
-$$
 v^\dagger A^\dagger v = [\lambda (v^\dagger v)]^\dagger = \bar{\lambda} (v^\dagger v) \quad (5)
+\end{array}
 $$
 
 5. From (2) is equal (5):
