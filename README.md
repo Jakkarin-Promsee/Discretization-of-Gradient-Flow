@@ -241,7 +241,7 @@ $$ -->
 
 The quadratic form $Q(\mathbf{x}) = \mathbf{x}^T H \mathbf{x}$ is the second-order term of a function's Taylor expansion. It tells us about the local curvature (or shape) of the function $f(\mathbf{x})$ around a critical point.
 
-<p align="center">
+<p style="text-align: center;">
   <img src="docs-src\latex\2.2.2.quadratic-form.png" alt="Neural Network Overview" width="500px">
 </p>
 
