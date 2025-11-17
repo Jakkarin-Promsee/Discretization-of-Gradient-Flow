@@ -224,7 +224,7 @@ From Clairaut's Theorem (Equality of Mixed Partials), If mixed second partial de
 $$
 \frac{\partial^2 f(x)} {\partial x_i \partial x_j}
 = \frac{\partial^2 f(x)} {\partial x_j \partial x_i} \quad
-\rightarrow \quad
+\longrightarrow \quad
 H_{ij}(\theta)
 = \frac{\partial^2 f(x)} {\partial \theta_i \partial \theta_j}
 = \frac{\partial^2 f(x)} {\partial \theta_j \partial \theta_i}
