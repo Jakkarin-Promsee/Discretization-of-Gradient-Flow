@@ -12,6 +12,11 @@ class BaseLrModel:
         # Using type hints.
         self.layers: List[Union[DenseLayer, ActivationLayer]] = []
         self.last_output_dim = None
+
+        print('test')
+
+    def getHistory(self):
+        return self.history
     
     def add(self, dense, activation="", input_shape=None):
         """Add layer to models. First adding should provide input_shape"""
@@ -44,6 +49,9 @@ class BaseLrModel:
     def total_params(self):
         """Get totoal parameters (int)"""
         return sum(layer.params_count() for layer in self.layers if isinstance(layer, DenseLayer)) 
+    
+    def rollback(self):
+        self.layers = self.history.get_best_layers()
     
     
     def predict_best(self, X):

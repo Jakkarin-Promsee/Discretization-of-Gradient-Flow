@@ -1,11 +1,10 @@
-import copy
 import numpy as np
+import copy
 
-from ..core import BaseLrModel
+from . import BaseLrModel
 from ..layers import DenseLayer, ActivationLayer
-from ..utils import metrics
 
-class ImplicitLrModel(BaseLrModel):
+class BaseLrModelImplementHessain(BaseLrModel):
     def flatten_params(self, layers):
         flat_list = []
         shapes = []
@@ -104,7 +103,8 @@ class ImplicitLrModel(BaseLrModel):
 
                 # Store Gradient
                 gradient.insert(0, dL_db)
-                gradient.insert(0, dL_dW)
+                gradient.insert(0,dL_dW)
+                
                 
                 # Compute next delta
                 dL_dz = np.dot(dL_dz, layer.W.T)
@@ -140,70 +140,3 @@ class ImplicitLrModel(BaseLrModel):
             # second derivative column j
             H[:, j] = (g_pos - g_neg) / (2 * epsilon)
         return H
-
-    def fit(self, X_train, y_train, X_eval, y_eval, epochs=100, batch_size=32, learning_rate=10.0):
-        """train models"""
-        n_samples = X_train.shape[0]
-
-        for epoch in range(epochs):
-            for batch_start in range(0, n_samples, batch_size):
-                batch_end = min(batch_start + batch_size, n_samples)
-
-                 # Fetch the batch
-                y_true_batch = y_train[batch_start:batch_end]
-                X_batch = X_train[batch_start:batch_end]
-
-                # Backward euler on a quadratic method
-                theta, shapes = self.flatten_params(self.layers)
-                g = self.compute_gradient(self.layers, X_batch, y_true_batch)
-                H = self.compute_hessian(self.layers, X_batch, y_true_batch, epsilon=1e-5)  # smaller epsilon
-                # (I + eta H)
-                H_i = learning_rate*H + np.eye(H.shape[0])
-
-                # (theta + eta b)
-                theta_term = theta + learning_rate*(np.dot(H, theta) - g)
-
-                # Calculate Newton step direction (delta)
-                try:
-                    # Solve: (I + eta H) * delta = (theta + eta b)
-                    delta = np.linalg.solve(H_i, theta_term)
-                except np.linalg.LinAlgError:
-                    print("Warning: Hessian is singular. Skipping step.")
-                    continue  
-
-
-                print((np.linalg.solve(H_i, theta_term)))
-
-                # theta new = (I + eta H)^-1 (theta + eta b)
-                # --- Update Weight (using the accepted theta_new) ---
-                # Use the accepted theta_new (computed at the end of the line search)
-                self.unflatten_params(self.layers, delta, shapes)
-
-                # Predict
-                pred_train = self.predict(X_train)
-                pred_eval = self.predict(X_eval)
-
-                # Evaluate
-                train_acc = metrics.mae(y_train, pred_train)
-                val_acc = metrics.mae(y_eval, pred_eval)
-                
-                # Save
-                self.history.save(train_acc, val_acc)
-                self.history.save_predict(X_eval, pred_eval, y_eval)
-                self.history.save_model(self.layers, val_acc)
-                print(f"Batch {batch_start}/{n_samples}: acc: {train_acc}, val: {val_acc}")
-
-            print(f"Epoch {epoch+1}/{epochs} [", end="")
-
-            progress_bar_length = 25
-            progress = int((epoch/epochs)*progress_bar_length)
-            for i in range(progress_bar_length):
-                if(i<=progress):
-                    print("=", end="")
-                else:
-                    print(".", end="")
-            print("]")
-            print(f"loss: {train_acc:.4f}, val_loss: {val_acc:.4f}")
-            print("") 
-        print(f"best-loss: {self.history.get_best_loss():.4f}")
-        return self.history
