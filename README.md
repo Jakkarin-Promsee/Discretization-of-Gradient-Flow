@@ -8,24 +8,30 @@ This repository explores and compares three gradient descent approaches—**Expl
 
 - **Explicit GD (Standard Gradient Descent)**
 
-  - **Formula:**  
-    $$\theta_{k+1} = \theta_k - \eta \nabla L_k$$
-  - **Explanation:**  
-    Uses a **first-order (linear) Taylor approximation** of the loss to update parameters. Each step moves along the gradient direction with step size $\eta$. Simple but may struggle with stiff or ill-conditioned loss landscapes.
+  - **Formula:**
+
+$$\theta_{k+1} = \theta_k - \eta \nabla L_k$$
+
+- **Explanation:**  
+  Uses a **first-order (linear) Taylor approximation** of the loss to update parameters. Each step moves along the gradient direction with step size $\eta$. Simple but may struggle with stiff or ill-conditioned loss landscapes.
 
 - **Implicit GD (Backward Euler on Quadratic)**
 
-  - **Formula:**  
-    $$\theta_{k+1} = (I + \eta H_k)^{-1} \left(\theta_k + \eta (H_k \theta_k - \nabla L_k)\right)$$
-  - **Explanation:**  
-    Uses a **second-order (quadratic) Taylor approximation**, effectively taking the curvature of the loss into account. This allows more stable updates, particularly in stiff regions, by solving for the next step implicitly.
+  - **Formula:**
+
+$$\theta_{k+1} = (I + \eta H_k)^{-1} \left(\theta_k + \eta (H_k \theta_k - \nabla L_k)\right)$$
+
+- **Explanation:**  
+  Uses a **second-order (quadratic) Taylor approximation**, effectively taking the curvature of the loss into account. This allows more stable updates, particularly in stiff regions, by solving for the next step implicitly.
 
 - **Newton GD (Newton’s Method)**
-  - **Formula:**  
-    $$\theta_{k+1} = \theta_k - H_k^{-1} \nabla L_k$$
-  - **Explanation:**  
-    Also a quadratic approximation, but it **directly jumps to the local optimum** of the quadratic approximation in a single step.
-    - **Note:** Damping and Armijo line search are used to prevent instability, as Newton updates can diverge if the Hessian is ill-conditioned or the step overshoots.
+  - **Formula:**
+
+$$\theta_{k+1} = \theta_k - H_k^{-1} \nabla L_k$$
+
+- **Explanation:**  
+  Also a quadratic approximation, but it **directly jumps to the local optimum** of the quadratic approximation in a single step.
+  - **Note:** Damping and Armijo line search are used to prevent instability, as Newton updates can diverge if the Hessian is ill-conditioned or the step overshoots.
 
 ### Experiment Objective
 
@@ -36,8 +42,10 @@ This repository explores and compares three gradient descent approaches—**Expl
 
 #### 1. Early Convergence (Initial Steps)
 
-- Observed speed:  
-  $$\text{Newton GD} > \text{Implicit GD} > \text{Explicit GD}$$
+- Observed speed:
+
+$$\text{Newton GD} > \text{Implicit GD} > \text{Explicit GD}$$
+
 - **Reason:**
   - Newton GD can jump directly to the optimum of the local quadratic, achieving rapid initial convergence.
   - Implicit GD moves along a precise quadratic path, slower than Newton but faster than explicit GD.
@@ -51,8 +59,10 @@ This repository explores and compares three gradient descent approaches—**Expl
 
 #### 2. Late Convergence (Long-Term Behavior)
 
-- Observed trend:  
-  $$\text{Implicit GD} > \text{Explicit GD}, \quad \text{Newton GD is unstable}$$
+- Observed trend:
+
+$$\text{Implicit GD} > \text{Explicit GD}, \quad \text{Newton GD is unstable}$$
+
 - **Insights:**
   - Implicit GD’s quadratic approximation ensures fast and **stable convergence**, often faster than explicit GD in the long term. Convergence resembles $\frac{1}{x^2}$ versus $\frac{1}{x}$ for explicit GD.
   - Explicit GD eventually converges but requires much longer training.
@@ -100,7 +110,7 @@ Project/
 └── README.md       # Experiment report, including all description
 ```
 
-<!-- ## Full Proof
+## Full Proof
 
 ### 1. Principles of Deep Learning
 
@@ -462,5 +472,4 @@ $$
 $$
 
 $$
-$$ -->
 $$
