@@ -90,30 +90,35 @@ class ExplicitLrModel(BaseLrModel):
                         # dL/dz(l-1) = f'(z(l-1)) dot dL/da(l-1)
                         dL_dz = layer.backward(zal[i]) * dL_dz
 
-            # Predict
-            pred_train = self.predict(X_train)
-            pred_eval = self.predict(X_eval)
+                # Predict
+                pred_batch = self.predict(X_batch)
+                pred_train = self.predict(X_train)
+                pred_eval = self.predict(X_eval)
 
-            # Evaluate
-            train_acc = metrics.mae(y_train, pred_train)
-            val_acc = metrics.mae(y_eval, pred_eval)
-            
-            # Save
-            self.history.save(train_acc, val_acc)
-            self.history.save_predict(X_eval, pred_eval, y_eval)
-            self.history.save_model(self.layers, val_acc)
+                # Evaluate
+                batch_acc = metrics.mae(y_true_batch, pred_batch)
+                train_acc = metrics.mae(y_train, pred_train)
+                val_acc = metrics.mae(y_eval, pred_eval)
+                
+                # Save
+                self.history.save(train_acc, val_acc)
+                self.history.save_predict(X_eval, pred_eval, y_eval)
+                self.history.save_model(self.layers, val_acc)
 
-            print(f"Epoch {epoch+1}/{epochs} [", end="")
+                # Log batch data
+                print(f"Epoch {epoch+1}/{epochs} [", end="")
 
-            progress_bar_length = 25
-            progress = int((epoch/epochs)*progress_bar_length)
-            for i in range(progress_bar_length):
-                if(i<=progress):
-                    print("=", end="")
-                else:
-                    print(".", end="")
-            print("]")
-            print(f"loss: {train_acc:.4f}, val_loss: {val_acc:.4f}")
-            print("") 
+                progress_bar_length = 25
+                progress = int((epoch/epochs)*progress_bar_length)
+                for i in range(progress_bar_length):
+                    if(i<=progress):
+                        print("=", end="")
+                    else:
+                        print(".", end="")
+                print("]", end=", ")
+
+                print(f"{batch_start}/{n_samples}: ")
+                print(f"batch: {batch_acc:.3f}, acc: {train_acc:.3f}, val: {val_acc:.3f}")
+
         print(f"best-loss: {self.history.get_best_loss():.4f}")
         return self.history
