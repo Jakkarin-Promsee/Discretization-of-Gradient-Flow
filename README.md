@@ -156,11 +156,11 @@ First, subtitude second-order terms from Taylor Series:
 
 $$
 \begin{align*}
-  \frac{1}{2} (\Delta \theta)^T H (\Delta \theta) &=
+  \frac{1}{2} (\Delta \theta)^T H (\Delta \theta) &\approx
   \frac{1}{2} (\theta - \theta_0)^T H (\theta - \theta_0) \\
-  &= \frac{1}{2} \left[ (\theta^T H \theta) + (\theta_0^T H \theta) + (\theta^T H \theta_0) + (\theta_0^T H \theta_0) \right] \\
-  &= \frac{1}{2} \left[ (\theta^T H \theta) + (\theta^T H \theta_0) + (\theta^T H \theta_0) + (\theta_0^T H \theta_0) \right] \\
-  &= \frac{1}{2} (\theta^T H \theta) + (\theta^T H \theta_0)  + \frac{1}{2} (\theta_0^T H \theta_0)
+  &\approx \frac{1}{2} \left[ (\theta^T H \theta) + (\theta_0^T H \theta) + (\theta^T H \theta_0) + (\theta_0^T H \theta_0) \right] \\
+  &\approx \frac{1}{2} \left[ (\theta^T H \theta) + (\theta^T H \theta_0) + (\theta^T H \theta_0) + (\theta_0^T H \theta_0) \right] \\
+  &\approx \frac{1}{2} (\theta^T H \theta) + (\theta^T H \theta_0)  + \frac{1}{2} (\theta_0^T H \theta_0)
 \end{align*}
 $$
 
@@ -168,10 +168,10 @@ Then, subtitude second-order terms to full terms from Taylor Series:
 
 $$
 \begin{align*}
-  L(\theta) &=
+  L(\theta) &\approx
   L(\theta_0) + g^T (\Delta \theta) + \frac{1}{2} (\theta^T H \theta) + (\theta^T H \theta_0)  + \frac{1}{2} (\theta_0^T H \theta_0) \\
-  &= \frac{1}{2} \left[ H \right] \theta^2 - \left[ H \theta_0 - g \right]^T \theta + \left[ L(\theta_0) + \frac{1}{2} (\theta_0^T H \theta_0) \right] \\
-  &= \frac{1}{2} a \theta^2 - b \theta + c
+  &\approx \frac{1}{2} \left[ H \right] \theta^2 - \left[ H \theta_0 - g \right]^T \theta + \left[ L(\theta_0) + \frac{1}{2} (\theta_0^T H \theta_0) \right] \\
+  &\approx \frac{1}{2} a \theta^2 - b \theta + c
 \end{align*}
 $$
 
@@ -222,31 +222,31 @@ This gradient type will use same ideas as implicit GD, but instead of we gradull
 From quadratic formular:
 
 $$
-L(\theta) = L(\theta_0) + g^T (\Delta \theta) + \frac{1}{2} ((\Delta \theta)^T H (\Delta\theta))
+L(\theta) \approx L(\theta_0) + g^T (\Delta \theta) + \frac{1}{2} ((\Delta \theta)^T H (\Delta\theta))
 $$
 
 $$
-\nabla L(\theta) =  g +  H (\Delta \theta)
+\nabla L(\theta) \approx  g +  H (\Delta \theta)
 $$
 
 Then $\nabla L(\theta) = 0$
 
 $$
-0 =  g +  H (\Delta \theta)
+0 \approx  g +  H (\Delta \theta)
 $$
 
 $$
-H (\Delta \theta) =  -g
+H (\Delta \theta) \approx  -g
 $$
 
 $$
-\Delta \theta = -H^{-1} g
+\Delta \theta \approx -H^{-1} g
 $$
 
 Thus:
 
 $$
-\text{Newton GD:} \quad \theta_{k+1} = \theta_k - -H^{-1} g
+\text{Newton GD:} \quad \theta_{k+1} = \theta_k - H^{-1} g
 $$
 
 ---
