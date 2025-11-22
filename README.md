@@ -114,7 +114,7 @@ Project/
 
 ### 1. The origin of each discretization types
 
-#### 1.0 Taylor Series
+#### 1.0.1 Taylor Series
 
 Taylor series is an approximation $L(\theta)$ around current point $\theta$ with distance $\Delta \theta = \theta - \theta_0$:
 
@@ -141,6 +141,38 @@ $$
 
 $$
 \text{Explicit GD:} \quad \theta_{k+1} = \theta_k - \eta \nabla L(\theta)
+$$
+
+#### 1.0.2 Quadratic form from Taylor Series
+
+We will build $L(\theta) = a \Delta \theta^2 - b \Delta \theta + c$.
+
+Consider:
+
+- $\Delta theta = \theta - \theta_0$
+- $L(\theta + \Delta \theta) \approx L(\theta) + g_t^T (\Delta \theta) + (\Delta \theta)^T H_t (\Delta \theta) + \cdots$
+
+First, subtitude second-order terms from Taylor Series:
+
+$$
+\begin{align*}
+  \frac{1}{2} (\Delta \theta)^T H (\Delta \theta) &=
+  \frac{1}{2} (\theta - \theta_0)^T H (\theta - \theta_0) \\ &=
+  \frac{1}{2} \left[ (\theta^T H \theta) + (\theta_0^T H \theta) + (\theta^T H \theta_0) + (\theta_0^T H \theta_0) \right] \\ &=
+  \frac{1}{2} \left[ (\theta^T H \theta) + (\theta^T H \theta_0) + (\theta^T H \theta_0) + (\theta_0^T H \theta_0) \right] \\ &=
+\frac{1}{2} (\theta^T H \theta) + (\theta^T H \theta_0)  + \frac{1}{2} (\theta_0^T H \theta_0)
+\end{align*}
+$$
+
+Then, subtitude second-order terms to full terms from Taylor Series:
+
+$$
+\begin{align*}
+  L(\theta) &=
+  L(\theta_0) + g^T (\Delta \theta) + \frac{1}{2} (\theta^T H \theta) + (\theta^T H \theta_0)  + \frac{1}{2} (\theta_0^T H \theta_0) \\ &=
+  \frac{1}{2} \left[ H \right] \theta^2 - \left[ H \theta_0 - g \right]^T \theta + \left[ L(\theta_0) + \frac{1}{2} (\theta_0^T H \theta_0) \right] \\ &=
+  a \theta^2 - b \theta + c
+  \end{align*}
 $$
 
 #### 1.2 Implicit Gradient Descend (Backward euler on quadratic)
