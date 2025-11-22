@@ -114,7 +114,34 @@ Project/
 
 ### 1. The origin of each discretization types
 
+#### 1.0 Taylor Series
+
+Taylor series is an approximation $L(\theta)$ around current point $\theta$ with distance $\Delta \theta = \theta - \theta_0$:
+
+$$
+L(\theta + \Delta \theta) \approx L(\theta) + (\nabla L(\theta))^T (\Delta \theta)
++ (\Delta \theta)^T(\nabla^2 L(\theta)) (\Delta \theta) + \cdots
+$$
+
+$$
+L(\theta + \Delta \theta) \approx L(\theta) + g_t^T (\Delta \theta)
++ (\Delta \theta)^T H_t (\Delta \theta) + \cdots
+$$
+
 #### 1.1 Explicit Gradient Descend (Normal Gradient Descend)
+
+This gradient descend will use only first-order terms of taylor series. Choosing $\Delta \theta$ to maximize the decreasing of loss with linear approximation.
+
+$$
+\Delta L \approx (\nabla L(\theta))^T \Delta \theta
+\approx Minimize(|| \nabla L(\theta) || || \Delta \theta || \cos (\phi))
+, \quad \text{that is} \quad
+\cos (\phi) = -1 , \quad \phi = -180 \degree
+$$
+
+$$
+\text{Explicit GD:} \quad \theta_{k+1} = \theta_k - \eta \nabla L(\theta)
+$$
 
 #### 1.2 Implicit Gradient Descend (Backward euler on quadratic)
 
