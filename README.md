@@ -161,7 +161,7 @@ $$
 
 Recall:
 
-- $\Delta theta = \theta - \theta_0$
+- $\Delta \theta = \theta - \theta_0$
 - $L(\theta + \Delta \theta) \approx L(\theta) + g_t^T (\Delta \theta) + (\Delta \theta)^T H_t (\Delta \theta) + \cdots$
 
 Substitute the second-order term:
@@ -496,7 +496,7 @@ $$
 \end{array}
 $$
 
-5. As spectral's theorem, we know $\lambda_i \in \mathbb{R}, \quad \text{for all } i = 1, \ldots, n ,\quad \mathbf{v}_i \in \mathbb{R}^n, \quad \text{for all } i = 1, \ldots, n$. So $\lambda_1 \ne \lambda_2$, making $(\lambda_1 \ne \lambda_2)$ is non-zero. Thus, $(v_1^T v_2) = 0$ or $v_1 \dot v_2$ = 0. Thus $v_1$ and $v_1$ is orthogonal.
+5. As spectral's theorem, we know $\lambda_i \in \mathbb{R}, \quad \text{for all } i = 1, \ldots, n ,\quad \mathbf{v}_i \in \mathbb{R}^n, \quad \text{for all } i = 1, \ldots, n$. So $\lambda_1 \ne \lambda_2$, making $(\lambda_1 \ne \lambda_2)$ is non-zero. Thus, $(v_1^T v_2) = 0$ or $v_1 \dot v_2$ = 0. Thus $v_1$ and $v_2$ is orthogonal.
 
 ### 2.6 Quadratic Form of symmetric Hessain for Eigen-decomposit
 
@@ -508,8 +508,8 @@ $$
 \begin{align*}
 Q(x) = x^T H x &= x^T Q \Lambda Q^T x \\
 &= (Q^T x)^T \Lambda (Q^T x) \\
-&= \sum_{i}^n \Lambda_{ii} (Q^T x)_i^2 + 2 \sum_{i<j}^n \Lambda_{ii} (Q^T x)\_i (Q^T x)\_j \\
-&= \sum_{i}^n \lambda\_{ii} (v_i^T x)^2
+&= \sum_{i}^n \Lambda_{ii} (Q^T x)_i^2 + 2 \sum_{i<j}^n \Lambda_{ii} (Q^T x)_i (Q^T x)_j \\
+&= \sum_{i}^n \lambda_{ii} (v_i^T x)^2
 \end{align*}
 $$
 
